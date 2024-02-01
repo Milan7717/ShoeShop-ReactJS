@@ -3,7 +3,7 @@ import { Footer } from 'flowbite-react';
 
 const Foot = () => {
   return (
-    <Footer container>
+    <Footer container className='my-10'>
     <Footer.Copyright href="#" by="Flowbite™" year={2022} />
     <Footer.LinkGroup>
       <Footer.Link href="#">About</Footer.Link>
