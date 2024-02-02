@@ -2,7 +2,10 @@ import React from "react";
 import ImageCarousel from "../components/ImageCarousel";
 import Nav from "../components/Navbar";
 import ShoeCard from "../components/ShoeCard";
-// import Foot from "../components/Footer";
+import { Link } from "react-router-dom";
+import { FaLinkedin, FaLinkedinIn } from "react-icons/fa6";
+import { FaFacebook } from "react-icons/fa6";
+import Foot from "../components/Footer";
 
 const image = [
   "/src/assets/img/kid2.jpg",
@@ -39,15 +42,11 @@ const Home = () => {
   return (
     <>
       <Nav />
-      <div className="md:mx-24">
-        <div className="my-10 mx-10">
-          <div className="grid md:grid-cols-2 grid-cols-1 md:gap-4">
+      <div className="md:mx-32 lg:mx-36 sm:mx-24 mx-8">
+        <div className="my-10 ">
+          <div className="grid md:grid-cols-2 grid-cols-1 gap-4 md:gap-8">
             <div className="lg:col-span-1 flex sm:items-center justify-center">
-              <p
-                data-aos="fade-down"
-                data-aos-easing="linear"
-                data-aos-duration="1000"
-              >
+              <p>
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                 Repellendus, dolorum non. Delectus fugit ab non cupiditate
                 architecto nemo quas totam repellendus ad sequi consequuntur
@@ -64,9 +63,12 @@ const Home = () => {
         </div>
 
         {/* Recent Shoes */}
-        <div>
-          <h1 className="my-10 text-4xl font-bold text-center">Recent Lunch and Popular Shoes</h1>
-          <div className="sm:mx-10 mx-2 grid md:grid-cols-3 grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="my-10">
+          <h1 className="my-4 sm:text-3xl text:2xl md:text-4xl font-bold">
+            Recent Lunch and Popular Shoes
+          </h1>
+
+          <div className="grid md:grid-cols-3 grid-cols-2 lg:grid-cols-4 gap-10">
             {recentApi.map((data, index) => {
               return (
                 <ShoeCard key={index} image={data.image} price={data.price} />
@@ -75,26 +77,49 @@ const Home = () => {
           </div>
         </div>
 
-        <div
-          data-aos="fade-up"
-          data-aos-easing="linear"
-          data-aos-duration="1000"
-          className="my-6 sm:mx-10 mx-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
-        >
-          {categoriesApi.map((data, index) => {
-            return (
-              <ShoeCard
-                key={index}
-                image={data.image}
-                heading={data.heading}
-                link={data.link}
-              />
-            );
-          })}
+        <div className="my-10">
+          <h1 className="my-4 sm:text-3xl text:2xl md:text-4xl font-bold">Categories</h1>
+          <div className="my-6  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {categoriesApi.map((data, index) => {
+              return (
+                <ShoeCard
+                  key={index}
+                  image={data.image}
+                  heading={data.heading}
+                  link={data.link}
+                />
+              );
+            })}
+          </div>
+        </div>
+        <div className=" my-10">
+          <p className="my-4 sm:text-3xl text:2xl md:text-4xl font-bold">About Us</p>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis
+            rerum molestiae totam! Labore vel tempora voluptas blanditiis nisi
+            nostrum consectetur eveniet odit ad quod minima corporis
+            exercitationem a porro laboriosam dolores ducimus quis aperiam,
+            quidem similique ex. Laudantium iste rerum accusantium, vitae odit
+            culpa consequuntur soluta nostrum rem libero hic!
+          </p>
+        </div>
+
+        <div className=" my-10 itallic">
+          <p className="my-4 sm:text-3xl text:2xl md:text-4xl font-bold">Contact us</p>
+          <div className="">
+            <p className="my-2">Contact : 10000000</p>
+            <p className="my-2">Email : mail@gmail.com</p>
+            <p className="my-2 ">Address : Somewhere,Nepal</p>
+            <div className="flex sm:text-3xl md:text-4xl text-2xl">
+            <Link to={"/"}><div className="mx-1 sm:mx-2 hover:bg-blue-300"><FaLinkedin /></div></Link> 
+            <Link to={"/"}><div className="mx-1 sm:mx-2 hover:bg-blue-300"><FaFacebook /></div></Link> 
+            </div>
+            <Link to={"/contact"} ><button className=" btn p-2 my-2">Send Message</button></Link>
+          </div>
         </div>
       </div>
 
-      {/* <Foot /> */}
+      <Foot />
     </>
   );
 };
