@@ -1,17 +1,24 @@
 import express, { request, response } from "express";
 import { PORT, mongodbURL } from "./config.js";
 import mongoose from "mongoose";
+import categoryRoute from "./routes/categoryRoute.js"
 
 const app = express();
 
-app.get("/", (request, response) => {
-  console.log(request);
-  return response.status(234).send("Hello world");
+//middleware for parsing request body
+app.use(express.json());
+
+app.get("/", (req, res) => {
+  console.log(req);
+  return res.status(234).send("Welcome to the ShoeShop home page");
 });
 
 app.listen(PORT, () => {
   console.log(`App is listening ${PORT}`);
 });
+
+//middleware for categoryRoute model
+app.use("/category", categoryRoute)
 
 //mongoose connect
 mongoose
